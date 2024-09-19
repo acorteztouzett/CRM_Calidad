@@ -16,15 +16,29 @@ import {
   BellIcon,
   EmailIcon,
   InfoOutlineIcon,
-  AddIcon,
-  ExternalLinkIcon,
-  RepeatIcon,
   EditIcon,
 } from "@chakra-ui/icons";
 import { useSelector } from "react-redux";
+import { useLogoutMutation } from "@/features/api/auth";
+import { LogOutIcon } from "lucide-react";
+import { useDispatch } from "react-redux";
+import { userHasLoggedOut } from "@/features/auth/slice";
 
 const Navbar = () => {
   const { user } = useSelector((state) => state.auth);
+  const [logout] = useLogoutMutation()
+  const dispatch = useDispatch()
+
+
+  async function handleLogout() {
+    try {
+      await logout().unwrap();
+      dispatch(userHasLoggedOut());
+      window.location.reload();
+    } catch(err) {
+      console.error(err);
+    }
+  }
 
   return (
     <Flex
@@ -36,12 +50,11 @@ const Navbar = () => {
       bg="white"
       borderBottom="1px solid"
       borderColor="gray.200">
-      {/* Search bar */}
       <Flex alignItems="center">
         <Box display={{ base: "none", md: "block" }} mr={4}>
           <IconButton
             ml={40}
-            aria-label="Search"
+            aria-label="Buscar"
             icon={<SearchIcon />}
             colorScheme="gray"
             borderRadius="50%"
@@ -50,7 +63,7 @@ const Navbar = () => {
           />
         </Box>
         <Input
-          placeholder="Search..."
+          placeholder="Buscando..."
           bg="gray.100"
           color="black"
           border="1px solid"
@@ -62,9 +75,9 @@ const Navbar = () => {
         />
       </Flex>
 
-      {/* Right side */}
+
       <Flex alignItems="center" mr={10}>
-        {/* Notification icons */}
+
         <IconButton
           aria-label="Notifications"
           icon={<BellIcon />}
@@ -93,17 +106,12 @@ const Navbar = () => {
           _hover={{ bg: "gray.100" }}
         />
 
-        <Box as="span" mr={4} fontWeight="bold">
-          Welcome back {user?.firstName ?? "User"}!
-        </Box>
-
-        {/* User profile */}
         <Menu>
           <MenuButton
             as={Avatar}
             bg="black"
             color="white"
-            //p={2}
+            p={1}
             src={user?.avatar}
             name={`${user?.firstName ?? "Unknown"} ${user?.lastName ?? "User"}`}
             boxSize="40px"
@@ -114,14 +122,14 @@ const Navbar = () => {
           <MenuList>
             <MenuItem
               as={RouterLink}
-              to="/profile"
-              icon={<AddIcon />}
-              _hover={{ bg: "gray.100" }}>
-              Profile
+              to="/me"
+              icon={<EditIcon />}
+            >
+              Editar Perfil
             </MenuItem>
-            <MenuItem icon={<ExternalLinkIcon />}>New Window</MenuItem>
-            <MenuItem icon={<RepeatIcon />}>Open Closed Tab</MenuItem>
-            <MenuItem icon={<EditIcon />}>Open File...</MenuItem>
+            <MenuItem icon={<LogOutIcon />}
+              onClick={handleLogout}
+            >Cerrar Sesion</MenuItem>
           </MenuList>
         </Menu>
       </Flex>

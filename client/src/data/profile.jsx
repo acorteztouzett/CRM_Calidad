@@ -2,35 +2,11 @@ import { z } from "zod";
 
 export const tabs = [
   {
-    title: "Profile",
+    title: "Perfil",
     value: "profile",
     href: "/me",
-    description: "Update your personal information and account details.",
-  },
-  {
-    title: "Preferences",
-    value: "preferences",
-    href: "/me/preferences",
-    description: "Customize notifications, themes, and default views.",
-  },
-  {
-    title: "Security",
-    value: "security",
-    href: "/me/security",
-    description: "Manage your account security and access controls.",
-  },
-  {
-    title: "Data",
-    value: "data",
-    href: "/me/data",
-    description: "Import/export data.",
-  },
-  {
-    title: "Socials",
-    value: "socials",
-    href: "/me/socials",
-    description: "Link and manage social media accounts.",
-  },
+    description: "Actualiza tus datos e información personal.",
+  }
 ];
 
 export const profileFormSchema = z.object({
@@ -56,7 +32,7 @@ export const profileFormSchema = z.object({
     .array(
       z
         .object({
-          value: z.string().url({ message: "Please enter a valid URL." }),
+          value: z.string().url({ message: "Ingresa un URL válido." }),
         })
         .transform((obj) => obj.value)
         .optional(),

@@ -23,7 +23,6 @@ import { useDispatch } from "react-redux";
 import { toast } from "sonner";
 
 const schema = z.object({
-  // Write it here since it's minimal
   email: z.string().email("Please provide a valid email.").trim(),
   password: z.string().min(8, "Password should at least 8 chars."),
 });
@@ -46,11 +45,11 @@ export default function LogInPage() {
       .then((response) => {
         if (response.data) dispatch(userHasAuthenticated(response.data.user));
         if (response.error && response.error.originalStatus !== 401)
-          throw "Login Failed, Problem on server end.";
+          throw "Login failed. Contacta con el administrador :(";
       })
       .catch((err) => {
         console.error(err);
-        toast.error("Login failed. Please try again or contact support.");
+        toast.error("Login failed. Contacta con el administrador :(");
       });
   };
 
@@ -60,22 +59,17 @@ export default function LogInPage() {
         <div className="absolute inset-0" />
         <div className="relative z-20 flex items-center text-lg font-medium gap-2">
           <NotebookTabs />
-          sanzCRM
+          Huellipets CRM
         </div>
 
-        <div className="relative z-20 mt-auto">
-          <blockquote className="space-y-2">
-            <p className="text-lg">&ldquo;Dêpechez vous.&rdquo;</p>
-            <footer className="text-sm">&nbsp;– l&apos;Bacha</footer>
-          </blockquote>
-        </div>
+        
       </div>
 
       <Card className="max-w-sm mx-auto shadow-xl">
         <CardHeader>
           <CardTitle className="text-2xl">Login</CardTitle>
           <CardDescription>
-            Enter your email below to login to your account
+            Ingresa tu correo para acceder a la plataforma.
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -96,11 +90,11 @@ export default function LogInPage() {
                 </div>
                 <div className="grid gap-2">
                   <div className="flex items-center">
-                    <Label htmlFor="password">Password</Label>
+                    <Label htmlFor="password">Contraseña</Label>
                     <Link
                       to="#"
                       className="ml-auto inline-block text-xs text-neutral-500 underline">
-                      Forgot your password?
+                      Olvidaste tu contraseña?
                     </Link>
                   </div>
                   <Input
@@ -113,20 +107,20 @@ export default function LogInPage() {
                     <p className="text-red-500 text-xs">{errors.password.message}</p>
                   )}
                   {err && err.originalStatus === 401 && (
-                    <p className="text-red-500 text-xs">Invalid credentials.</p>
+                    <p className="text-red-500 text-xs">Credenciales incorrectas.</p>
                   )}
                 </div>
                 <Button type="submit" disabled={isSubmitting} className="w-full">
-                  {isSubmitting || isLoading ? <Spinner /> : "Login"}
+                  {isSubmitting || isLoading ? <Spinner /> : "Iniciar sesión"}
                 </Button>
                 <Button variant="outline" role="lbrd" className="w-full">
-                  Login with Google
+                  Inicia sesión con Google
                 </Button>
               </div>
               <div className="mt-4 text-center text-sm">
-                Don&apos;t have an account?{" "}
+                No tienes cuenta? Registrate aquí{" "}
                 <Link to="/signup" className="underline">
-                  Sign up
+                  Registrarme
                 </Link>
               </div>
             </form>

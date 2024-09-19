@@ -80,10 +80,10 @@ const CompaniesList = () => {
   return (
     <Box className="px-4">
       <Heading as="h1" size="xl" mb={6}>
-        Companies
+        Compañias
       </Heading>
       <Input
-        placeholder="Search by name or industry"
+        placeholder="Buscar por nombre o industria"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
         mb={4}
@@ -132,7 +132,7 @@ const CompaniesList = () => {
                   color="white"
                   as={RouterLink}
                   to={`/companies/${company._id}`}>
-                  View details
+                  Ver detalles
                 </Button>
                 <Button
                   onClick={() => handleDeleteClick(company)}
@@ -140,7 +140,7 @@ const CompaniesList = () => {
                   color="red.500"
                   ml={2}
                   leftIcon={<DeleteIcon color="red.500" />}>
-                  Delete
+                  Eliminar
                 </Button>
               </CardFooter>
             </Card>
@@ -153,7 +153,7 @@ const CompaniesList = () => {
           _hover={{ bg: "RGBA(0, 0, 0, 0.04)", boxShadow: "2xl" }}>
           <CardHeader bg="gray.50">
             <Heading size="md">
-              <Center>Add new company</Center>
+              <Center>Añadir nueva compañia</Center>
             </Heading>
           </CardHeader>
           <CardBody as="button" onClick={onOpAddMod}>

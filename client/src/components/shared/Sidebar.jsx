@@ -84,14 +84,14 @@ const Sidebar = ({ isSidebarOpen, toggleSidebar }) => {
 
       <NavItem
         icon={FaHome}
-        label="Dashboard"
-        to="/dashboard"
+        label="Inicio"
+        to="/"
         isSidebarOpen={isSidebarOpen}
       />
       <Divider mb={2} mt={2} />
       <NavItem
         icon={FaBuilding}
-        label="Companies"
+        label="Empresas"
         to="/companies"
         isSidebarOpen={isSidebarOpen}
       />
@@ -135,49 +135,19 @@ const Sidebar = ({ isSidebarOpen, toggleSidebar }) => {
       )}
 
       <NavItem
-        icon={FaChartBar}
-        label="Stats"
-        to="/stats"
-        isSidebarOpen={isSidebarOpen}
-      />
-      <NavItem
         icon={FaUsers}
-        label="Contacts"
+        label="Contactos"
         to="/contacts"
         isSidebarOpen={isSidebarOpen}
       />
       <NavItem
         icon={FaMoneyBillWave}
-        label="Deals"
+        label="Facturas"
         to="/deals"
         isSidebarOpen={isSidebarOpen}
       />
-      <NavItem icon={FaListUl} label="Tasks" to="/tasks" isSidebarOpen={isSidebarOpen} />
-      <NavItem
-        icon={PiKanbanBold}
-        label="Kanban"
-        to="/kanban"
-        isSidebarOpen={isSidebarOpen}
-      />
+      <NavItem icon={FaListUl} label="Tareas" to="/tasks" isSidebarOpen={isSidebarOpen} />
 
-      <Divider m={4} />
-
-      <NavItem label="Emails" isSidebarOpen={isSidebarOpen} />
-      <NavItem label="Chat" isSidebarOpen={isSidebarOpen} />
-      <NavItem label="Calendar" isSidebarOpen={isSidebarOpen} />
-      <NavItem label="More..." isSidebarOpen={isSidebarOpen} />
-
-      <Box
-        as="span"
-        py={2}
-        px={isSidebarOpen ? 4 : 2}
-        mt="auto"
-        _hover={{ textDecoration: "none", bg: "blue.50" }}
-        display="flex"
-        alignItems="center"
-        justifyContent={isSidebarOpen ? "start" : "center"}>
-        Settings
-      </Box>
     </VStack>
   );
 };

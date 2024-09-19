@@ -33,17 +33,16 @@ export default function SignUpPage() {
   const navigate = useNavigate();
   const [signup, { isLoading }] = useSignupMutation();
   const onSubmit = async (data) => {
-    // went the long road, in order to access the error immediatly.
-    // You have to chain `unwrap()`
+    
     try {
       await signup(data).unwrap();
-      toast.info("Registered successfully, Please login.");
+      toast.info("Registrado correctamente. Inicia sesión.");
       navigate("/login");
     } catch (err) {
       console.error(err);
       if (err.status === 409)
-        setError("email", { type: 409, message: "Email already exists." });
-      toast.error("Registration failed. Please try again or contact support.");
+        setError("email", { type: 409, message: "El email ya existe" });
+      toast.error("El registro falló. Contacta con el administrador :(");
     }
   };
 
@@ -53,21 +52,16 @@ export default function SignUpPage() {
         <div className="absolute inset-0" />
         <div className="relative z-20 flex items-center text-lg font-medium gap-2">
           <NotebookTabs />
-          sanzCRM
+          Huellipets CRM
         </div>
 
-        <div className="relative z-20 mt-auto">
-          <blockquote className="space-y-2">
-            <p className="text-lg">&ldquo;Dêpechez vous.&rdquo;</p>
-            <footer className="text-sm">&nbsp;– l&apos;Bacha</footer>
-          </blockquote>
-        </div>
+        
       </div>
 
       <Card className="mx-auto max-w-sm shadow-xl">
         <CardHeader>
-          <CardTitle className="text-xl">Sign Up</CardTitle>
-          <CardDescription>Enter your information to create an account</CardDescription>
+          <CardTitle className="text-xl">Registrarme</CardTitle>
+          <CardDescription>Ingresa tu información para registrarte</CardDescription>
         </CardHeader>
         <CardContent>
           <Form>
@@ -79,20 +73,20 @@ export default function SignUpPage() {
                     errors.lastName || errors.firstName ? "grid-rows-[4fr_1fr]" : "",
                   )}>
                   <div className="grid gap-2">
-                    <Label htmlFor="firstName">First name</Label>
+                    <Label htmlFor="firstName">Nombres</Label>
                     <Input
                       id="firstName"
                       autoComplete="current-firstname"
-                      placeholder="John"
+                      placeholder="Juan"
                       {...register("firstName")}
                     />
                   </div>
                   <div className="grid gap-2">
-                    <Label htmlFor="lastName">Last name</Label>
+                    <Label htmlFor="lastName">Apellidos</Label>
                     <Input
                       id="lastName"
                       autoComplete="current-lastname"
-                      placeholder="Doe"
+                      placeholder="Garcia"
                       {...register("lastName")}
                     />
                   </div>
@@ -115,12 +109,12 @@ export default function SignUpPage() {
                   )}
                 </div>
                 <div className="grid gap-2">
-                  <Label htmlFor="password">Password</Label>
+                  <Label htmlFor="password">Contraseña</Label>
                   <Input
                     id="password"
                     type="password"
                     autoComplete="password"
-                    placeholder="Min. 8 characters"
+                    placeholder="Min. 8 caracteres"
                     {...register("password")}
                   />
                   {errors.password && (
@@ -131,16 +125,16 @@ export default function SignUpPage() {
                   type="submit"
                   disabled={isSubmitting || isLoading}
                   className="w-full">
-                  {isLoading ? <Spinner /> : "Create an account"}
+                  {isLoading ? <Spinner /> : "Crear cuenta"}
                 </Button>
                 <Button variant="outline" className="w-full">
-                  Sign up with GitHub
+                  Registrarte con Google
                 </Button>
               </div>
               <div className="mt-4 text-center text-sm">
-                Already have an account?{" "}
+                Ya tienes cuenta?{" "}
                 <Link to="/login" className="underline">
-                  Sign in
+                  Ingresa aquí
                 </Link>
               </div>
             </form>

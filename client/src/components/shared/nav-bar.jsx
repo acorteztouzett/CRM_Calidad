@@ -29,9 +29,6 @@ export function Nav({ links, isCollapsed }) {
               </TooltipTrigger>
               <TooltipContent side="right" className="flex items-center gap-4">
                 {link.title}
-                {/* {link.label && (
-                  <span className="ml-auto text-muted-foreground">{link.label}</span>
-                )} */}
               </TooltipContent>
             </Tooltip>
           ) : (

@@ -48,7 +48,7 @@ const CompanyDetails = () => {
   if (!company) {
     return (
       <Box display="flex" justifyContent="center" alignItems="center" height="100vh">
-        <Heading>No company found for ID: {companyId}</Heading>
+        <Heading>No se encontró compañia con el ID: {companyId}</Heading>
       </Box>
     );
   }
@@ -61,8 +61,7 @@ const CompanyDetails = () => {
       <Tabs variant="soft-rounded" colorScheme="blue">
         <TabList>
           <Tab>General</Tab>
-          <Tab>Edit</Tab>
-          <Tab>Future Needs</Tab>
+          <Tab>Editar</Tab>
         </TabList>
 
         <TabPanels>
@@ -94,9 +93,9 @@ const CompanyDetails = () => {
                           {company.name}
                         </Text>
                       </Heading>
-                      <Text>Industry: {company.industry}</Text>
-                      <Text>Type: {company.companyType}</Text>
-                      <Text>Website: {company.website}</Text>
+                      <Text>Industria: {company.industry}</Text>
+                      <Text>Tipo: {company.companyType}</Text>
+                      <Text>URL: {company.website}</Text>
                       <Divider />
                       <Text color="gray.600">{company.description}</Text>
                     </Stack>
@@ -111,7 +110,7 @@ const CompanyDetails = () => {
                         <Box m={2} bg="blue.400" borderRadius="50px" p={2}>
                           <FaDollarSign color="white" size={40} />
                         </Box>
-                        <Heading fontSize="lg">Annual Revenue</Heading>
+                        <Heading fontSize="lg">Ingresos anuales</Heading>
                       </HStack>
                       <Divider />
                       <Text textAlign="center">{company.annualRevenue}</Text>
@@ -127,7 +126,7 @@ const CompanyDetails = () => {
                         <Box m={2} bg="red.400" borderRadius="50px" p={2}>
                           <LiaUsersSolid color="white" size={40} />
                         </Box>
-                        <Heading fontSize="lg">Employees</Heading>
+                        <Heading fontSize="lg">Empleados</Heading>
                       </HStack>
                       <Divider />
                       <Text textAlign="center">{company.employees}</Text>
@@ -143,7 +142,7 @@ const CompanyDetails = () => {
                         <Box m={2} bg="yellow.400" borderRadius="50px" p={2}>
                           <IoStarSharp color="white" size={40} />
                         </Box>
-                        <Heading fontSize="lg">Rating</Heading>
+                        <Heading fontSize="lg">Calificación</Heading>
                       </HStack>
                       <Divider />
                       <Text textAlign="center">{company.rating}</Text>
@@ -155,9 +154,6 @@ const CompanyDetails = () => {
           </TabPanel>
           <TabPanel>
             <CompanyForm company={company} />
-          </TabPanel>
-          <TabPanel>
-            <Text>Future Needs Content Here</Text>
           </TabPanel>
         </TabPanels>
       </Tabs>

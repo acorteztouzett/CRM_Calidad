@@ -27,7 +27,7 @@ function CompanyDelete({ isOpen, onClose, company, companyName }) {
       await deleteCompany(company).unwrap();
       toast({
         title: `${companyName} deleted`,
-        description: "The company has been successfully deleted.",
+        description: "Se eliminó correctamente.",
         status: "success",
         duration: 5000,
         isClosable: true,
@@ -37,7 +37,7 @@ function CompanyDelete({ isOpen, onClose, company, companyName }) {
       console.error(err);
       toast({
         title: "An error occurred.",
-        description: "Failed to delete the company.",
+        description: "Erro al eliminar.",
         status: "error",
         duration: 5000,
         isClosable: true,
@@ -49,21 +49,21 @@ function CompanyDelete({ isOpen, onClose, company, companyName }) {
     <Modal isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
       <ModalContent>
-        <ModalHeader>Delete Company</ModalHeader>
+        <ModalHeader>Eliminar compañia</ModalHeader>
         <ModalCloseButton />
         <ModalBody>
-          Are you sure you want to delete<strong> {companyName}</strong>?
+          Estas seguro que quieres eliminar a <strong> {companyName}</strong>?
         </ModalBody>
         <ModalFooter>
           <Button colorScheme="blue" mr={3} onClick={onClose}>
-            Cancel
+            Cancelar
           </Button>
           <Button
             onClick={handleDelete}
             variant="ghost"
             colorScheme="red"
             isLoading={isLoading}>
-            Delete
+            Eliminar
           </Button>
         </ModalFooter>
       </ModalContent>

@@ -59,10 +59,6 @@ app.use(session({
   saveUninitialized: false,
   unset: "destroy",
   store: mongoStore,
-  cookie: {
-    httpOnly: true,
-    // maxAge: 1000 * 60 * 10,
-  },
 }));
 app.use(passport.initialize());
 app.use(passport.session());

@@ -102,10 +102,10 @@ export function ProfileForm() {
                         variant="outline"
                         className="text-neutral-90 dark:hover:bg-lime-900 w-max"
                         onClick={() => {
-                          // Imma do the forbidden, ,-,
+                          
                           document.getElementById("avatar").click();
                         }}>
-                        {isUploading ? <Spinner /> : "Change Avatar"}
+                        {isUploading ? <Spinner /> : "Editar Avatar"}
                       </Button>
                       <Input
                         hidden
@@ -117,7 +117,7 @@ export function ProfileForm() {
                       />
                     </div>
                     <p className="text-[0.8rem] text-neutral-500 dark:text-neutral-400">
-                      Update your profile picture (4MB max..).
+                      Actualizar imagen de perfil (4MB max..).
                     </p>
                   </div>
                 </div>
@@ -128,7 +128,7 @@ export function ProfileForm() {
                       name="firstName"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>First Name</FormLabel>
+                          <FormLabel>Nombres</FormLabel>
                           <FormControl>
                             <Input
                               id="firstName"
@@ -148,7 +148,7 @@ export function ProfileForm() {
                       name="lastName"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Last Name</FormLabel>
+                          <FormLabel>Apellidos</FormLabel>
                           <FormControl>
                             <Input
                               id="lastName"
@@ -172,15 +172,12 @@ export function ProfileForm() {
                         <FormLabel>Bio</FormLabel>
                         <FormControl>
                           <Textarea
-                            placeholder="Tell us a little bit about yourself"
+                            placeholder="Escribe algo sobre ti"
                             className="resize-none"
                             {...field}
                           />
                         </FormControl>
-                        <FormDescription>
-                          You can <span>@mention</span> other users and organizations to
-                          link to them.
-                        </FormDescription>
+                        
                         <FormMessage />
                       </FormItem>
                     )}
@@ -192,13 +189,12 @@ export function ProfileForm() {
                     name="username"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Username</FormLabel>
+                        <FormLabel>Apodo</FormLabel>
                         <FormControl>
                           <Input placeholder="shadcn" value={field.value} {...field} />
                         </FormControl>
                         <FormDescription>
-                          This is your public display name. It can be your real name or a
-                          pseudonym. You can only change this once every 30 days.
+                          Escribe tu apodo
                         </FormDescription>
                         <FormMessage />
                       </FormItem>
@@ -215,7 +211,7 @@ export function ProfileForm() {
                     type="email"
                   />
                   <p className="text-[0.8rem] text-neutral-500">
-                    There just ain&apos;t no way you&apos;re changing this.
+                    No puedes editar tu email
                   </p>
                 </div>
                 <div className="space-y-2">
@@ -224,18 +220,16 @@ export function ProfileForm() {
                     control={form.control}
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Phone Number</FormLabel>
+                        <FormLabel>Celular</FormLabel>
                         <FormControl>
                           <Input
                             id="phone"
-                            placeholder="+212 (6) 555-5555"
+                            placeholder="999333111"
                             value={field.value}
                             {...field}
                           />
                         </FormControl>
-                        <FormDescription>
-                          Should prolly use area codes for better UX.
-                        </FormDescription>
+                        
                         <FormMessage />
                       </FormItem>
                     )}
@@ -249,12 +243,7 @@ export function ProfileForm() {
                       name={`urls.${index}.value`}
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className={cn(index !== 0 && "sr-only")}>
-                            URLs
-                          </FormLabel>
-                          <FormDescription className={cn(index !== 0 && "sr-only")}>
-                            Add links to your website, blog, or social media profiles.
-                          </FormDescription>
+              
                           <FormControl>
                             <Input
                               placeholder={`snaz${index}@domain.ma`}
@@ -267,19 +256,12 @@ export function ProfileForm() {
                       )}
                     />
                   ))}
-                  <Button
-                    type="button"
-                    variant="outline"
-                    size="sm"
-                    className="mt-2"
-                    onClick={() => append({ value: "" })}>
-                    Add URL
-                  </Button>
+                  
                 </div>
               </CardContent>
               <CardFooter>
                 <Button type="submit" variant="default">
-                  {isLoading ? <Spinner /> : "Update profile"}
+                  {isLoading ? <Spinner /> : "Actualizar perfil"}
                 </Button>
               </CardFooter>
             </Card>

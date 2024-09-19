@@ -52,11 +52,15 @@ authRouter.post("/app", (req, res) => {
 });
 
 authRouter.post("/logout", (req, res) => {
-  req.logout((err) => handleError(err, res));
-  req.session.destroy((err) => {
+  req.logout((err) => {
     if (err) return handleError(err, res);
-    res.clearCookie("snaz_0ozQd8310");
-    return res.json({ type: "success", message: "Logged out." });
+    req.session.destroy((err) => {
+      if (err) return handleError(err, res);
+
+      res.clearCookie("snaz_0ozQd8310");
+
+      return res.json({ type: "success", message: "Logged out." });
+    });
   });
 });
 

@@ -179,12 +179,12 @@ const CreateContactForm = ({ isOpen, onClose }) => {
                     <Text color="red.500">{errors.description}</Text>
                   )}
                 </FormControl>
-                <FormControl>
-                  <FormLabel>birthday</FormLabel>
+                <FormControl isRequired>
+                  <FormLabel >birthday</FormLabel>
                   <Input name="birthday" onChange={handleChange} />
                   {errors.birthday && <Text color="red.500">{errors.birthday}</Text>}
                 </FormControl>
-                <FormControl>
+                <FormControl isRequired>
                   <FormLabel>Salutation</FormLabel>
                   <Select
                     value={selectedSalutation}
